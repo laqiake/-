@@ -1133,10 +1133,16 @@
         candle.addEventListener("pointerdown", (event) => {
           if (state.stage === "lit") beginHold(event);
         });
+        candle.addEventListener("touchstart", (event) => {
+          if (state.stage === "lit") beginHold(event);
+        }, { passive: false });
+        candle.addEventListener("mousedown", (event) => {
+          if (state.stage === "lit") beginHold(event);
+        });
         candle.addEventListener("contextmenu", (event) => event.preventDefault());
       });
 
-      ["pointerup", "pointercancel"].forEach((eventName) => {
+      ["pointerup", "pointercancel", "touchend", "touchcancel", "mouseup"].forEach((eventName) => {
         window.addEventListener(eventName, endHold);
       });
 
