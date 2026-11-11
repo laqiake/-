@@ -180,7 +180,7 @@
     .cake-stage {
       position: relative;
       width: min(100%, 390px);
-      height: clamp(288px, 61vw, 365px);
+      height: 372px;
       margin: 2px auto 0;
     }
 
@@ -297,7 +297,7 @@
 
     .candle {
       position: absolute;
-      bottom: 264px;
+      bottom: 250px;
       left: 50%;
       width: 52px;
       height: 112px;
@@ -321,7 +321,7 @@
 
     .candle:nth-child(2) {
       margin-left: -18px;
-      bottom: 270px;
+      bottom: 256px;
     }
 
     .candle:nth-child(3) {
@@ -516,13 +516,18 @@
       position: fixed;
       z-index: 20;
       inset: 0;
-      display: grid;
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
       padding:
         calc(16px + env(safe-area-inset-top))
         max(16px, env(safe-area-inset-right))
         calc(16px + env(safe-area-inset-bottom))
         max(16px, env(safe-area-inset-left));
-      place-items: center;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
       visibility: hidden;
       opacity: 0;
       background:
@@ -540,7 +545,9 @@
     .letter-card {
       display: flex;
       width: min(100%, 430px);
-      height: min(100%, 760px);
+      height: calc(100vh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+      height: calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+      max-height: 760px;
       padding: 27px 25px 22px;
       flex-direction: column;
       border: 1px solid rgba(91, 114, 100, 0.12);
@@ -549,6 +556,11 @@
       box-shadow: 0 20px 55px rgba(75, 87, 70, 0.14);
       transform: translateY(24px) rotate(-0.35deg);
       transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.25, 1);
+    }
+
+    html.letter-open,
+    body.letter-open {
+      overflow: hidden;
     }
 
     .letter-overlay.is-visible .letter-card {
@@ -700,10 +712,16 @@
       }
 
       .cake-stage {
-        height: 300px;
-        transform: scale(0.9);
-        transform-origin: 50% 0;
-        margin-bottom: -30px;
+        height: 340px;
+        margin-bottom: -6px;
+      }
+
+      .candle {
+        bottom: 226px;
+      }
+
+      .candle:nth-child(2) {
+        bottom: 232px;
       }
 
       .wish-reminder {
@@ -711,7 +729,6 @@
       }
 
       .letter-card {
-        height: calc(100svh - 28px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
         padding-top: 20px;
       }
     }
@@ -1014,6 +1031,9 @@
         playBlowSound();
         window.setTimeout(() => {
           navigator.vibrate?.([30, 40, 70]);
+          window.scrollTo(0, 0);
+          document.documentElement.classList.add("letter-open");
+          document.body.classList.add("letter-open");
           overlay.classList.add("is-visible");
           overlay.setAttribute("aria-hidden", "false");
           letterScroll.scrollTop = 0;
@@ -1101,6 +1121,8 @@
         confettiContext.clearRect(0, 0, innerWidth, innerHeight);
         overlay.classList.remove("is-visible");
         overlay.setAttribute("aria-hidden", "true");
+        document.documentElement.classList.remove("letter-open");
+        document.body.classList.remove("letter-open");
         holdStatus.hidden = true;
         holdFill.style.width = "0%";
         setStage("intro");
