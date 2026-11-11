@@ -1,0 +1,1135 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f3e8">
+  <meta name="format-detection" content="telephone=no">
+  <title>陈思蓓，生日快乐</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f3e8;
+      --paper-light: #fffaf1;
+      --ink: #384b43;
+      --muted: #788b80;
+      --rose: #c86c72;
+      --rose-deep: #a9565d;
+      --mint: #b7d2bf;
+      --gold: #e5b86d;
+      --line: rgba(77, 100, 86, 0.16);
+      --shadow: rgba(67, 75, 61, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Kaiti SC", "STKaiti", "KaiTi", "Songti SC", serif;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      min-height: 100svh;
+      overflow-x: hidden;
+      touch-action: manipulation;
+    }
+
+    button {
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .page {
+      position: relative;
+      width: 100%;
+      min-height: 100svh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 14% 10%, rgba(255, 214, 211, 0.42), transparent 28%),
+        radial-gradient(circle at 86% 34%, rgba(180, 221, 204, 0.46), transparent 28%),
+        linear-gradient(155deg, #fbf8ef 0%, #f7f1e4 52%, #faf5eb 100%);
+    }
+
+    .page::before {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.36;
+      background-image:
+        repeating-linear-gradient(7deg, rgba(88, 92, 73, 0.022) 0 1px, transparent 1px 7px),
+        repeating-linear-gradient(97deg, rgba(255, 255, 255, 0.15) 0 1px, transparent 1px 9px);
+      content: "";
+    }
+
+    .topbar {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      width: min(100%, 520px);
+      margin: 0 auto;
+      padding:
+        calc(14px + env(safe-area-inset-top))
+        max(20px, env(safe-area-inset-right))
+        4px
+        max(20px, env(safe-area-inset-left));
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .date {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #657a70;
+      font-family: "Courier New", monospace;
+      font-size: 11px;
+      letter-spacing: 3px;
+    }
+
+    .date::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #da8c88;
+      box-shadow: 0 0 0 5px rgba(218, 140, 136, 0.12);
+      content: "";
+    }
+
+    .icon-button {
+      display: inline-grid;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      place-items: center;
+      border: 1px solid rgba(90, 112, 99, 0.14);
+      border-radius: 50%;
+      color: #586f63;
+      background: rgba(255, 255, 255, 0.66);
+      box-shadow: 0 8px 24px rgba(78, 91, 75, 0.08);
+    }
+
+    .icon-button:active {
+      transform: scale(0.96);
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 520px);
+      margin: 0 auto;
+      padding: 6px 20px calc(30px + env(safe-area-inset-bottom));
+    }
+
+    .hero {
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: block;
+      color: #8b9b90;
+      font-family: "Courier New", monospace;
+      font-size: 9px;
+      letter-spacing: 4px;
+    }
+
+    h1 {
+      display: flex;
+      margin: 8px 0 0;
+      flex-direction: column;
+      align-items: center;
+      font-weight: 500;
+      line-height: 1.12;
+    }
+
+    .name {
+      color: #334a40;
+      font-size: 25px;
+      letter-spacing: 8px;
+    }
+
+    .greeting {
+      position: relative;
+      margin-top: 2px;
+      color: var(--rose-deep);
+      font-size: clamp(44px, 13vw, 60px);
+      letter-spacing: 2px;
+      text-shadow: 1px 2px 0 rgba(255, 255, 255, 0.72);
+    }
+
+    .greeting::after {
+      position: absolute;
+      z-index: -1;
+      right: 6%;
+      bottom: 8px;
+      left: 6%;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(242, 193, 177, 0.5);
+      transform: rotate(-1.5deg);
+      content: "";
+    }
+
+    .cake-stage {
+      position: relative;
+      width: min(100%, 390px);
+      height: clamp(288px, 61vw, 365px);
+      margin: 2px auto 0;
+    }
+
+    .cake-glow {
+      position: absolute;
+      top: 26px;
+      left: 50%;
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 226, 166, 0.43), transparent 68%);
+      transform: translateX(-50%);
+      transition: opacity 0.5s ease;
+    }
+
+    .cake-stage.is-lit .cake-glow {
+      opacity: 1;
+    }
+
+    .cake-stage:not(.is-lit) .cake-glow {
+      opacity: 0.4;
+    }
+
+    .cake {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .plate-shadow {
+      position: absolute;
+      right: 16%;
+      bottom: 7px;
+      left: 16%;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(66, 82, 72, 0.14);
+      filter: blur(7px);
+    }
+
+    .plate {
+      position: absolute;
+      right: 7%;
+      bottom: 26px;
+      left: 7%;
+      height: 36px;
+      border: 2px solid rgba(71, 96, 83, 0.15);
+      border-radius: 50%;
+      background: linear-gradient(#fffdf7, #e8eadf);
+      box-shadow: 0 12px 18px rgba(69, 86, 73, 0.08);
+    }
+
+    .tier {
+      position: absolute;
+      border: 2px solid rgba(104, 104, 79, 0.12);
+      box-shadow:
+        inset -12px 0 18px rgba(115, 85, 72, 0.07),
+        0 10px 18px rgba(87, 91, 70, 0.08);
+    }
+
+    .tier::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 18px;
+      border-radius: inherit;
+      background: #fff9ec;
+      content: "";
+    }
+
+    .tier-bottom {
+      right: 12%;
+      bottom: 55px;
+      left: 12%;
+      height: 91px;
+      border-radius: 16px 18px 25px 21px;
+      background:
+        radial-gradient(circle at 18% 76%, #d16e72 0 4px, #719b7f 5px 8px, transparent 9px),
+        radial-gradient(circle at 82% 72%, #d16e72 0 4px, #719b7f 5px 8px, transparent 9px),
+        #e9b5ad;
+    }
+
+    .tier-middle {
+      right: 22%;
+      bottom: 139px;
+      left: 22%;
+      height: 76px;
+      border-radius: 16px 18px 24px 21px;
+      background:
+        radial-gradient(circle at 20% 76%, #fffdf8 0 9px, transparent 10px),
+        radial-gradient(circle at 80% 72%, #fffdf8 0 7px, transparent 8px),
+        var(--mint);
+    }
+
+    .tier-top {
+      right: 34%;
+      bottom: 208px;
+      left: 34%;
+      height: 64px;
+      border-radius: 15px 18px 23px 20px;
+      background:
+        radial-gradient(circle at 23% 70%, #fffdf8 0 9px, transparent 10px),
+        radial-gradient(circle at 76% 68%, #fffdf8 0 7px, transparent 8px),
+        #f0c2ae;
+    }
+
+    .candles {
+      position: absolute;
+      z-index: 4;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .candle {
+      position: absolute;
+      bottom: 264px;
+      left: 50%;
+      width: 52px;
+      height: 112px;
+      padding: 0;
+      border: 0;
+      outline: none;
+      color: transparent;
+      background: transparent;
+      cursor: pointer;
+      pointer-events: auto;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    .candle:nth-child(1) {
+      margin-left: -61px;
+      transform: rotate(-2deg);
+    }
+
+    .candle:nth-child(2) {
+      margin-left: -18px;
+      bottom: 270px;
+    }
+
+    .candle:nth-child(3) {
+      margin-left: 25px;
+      transform: rotate(2deg);
+    }
+
+    .candle:focus-visible {
+      outline: 2px solid var(--rose);
+      outline-offset: 3px;
+    }
+
+    .candle-body {
+      position: absolute;
+      bottom: 0;
+      left: 15px;
+      width: 22px;
+      height: 76px;
+      overflow: hidden;
+      border: 2px solid rgba(102, 72, 65, 0.13);
+      border-radius: 7px 7px 4px 4px;
+      background: repeating-linear-gradient(
+        -18deg,
+        #fff9e9 0 15px,
+        #de8c89 15px 24px
+      );
+      box-shadow: inset -5px 0 0 rgba(185, 118, 104, 0.1);
+    }
+
+    .wick {
+      position: absolute;
+      z-index: 2;
+      bottom: 74px;
+      left: 25px;
+      width: 3px;
+      height: 15px;
+      border-radius: 3px;
+      background: #4b463d;
+    }
+
+    .flame {
+      position: absolute;
+      z-index: 3;
+      bottom: 85px;
+      left: 15px;
+      width: 24px;
+      height: 38px;
+      border-radius: 55% 48% 54% 48% / 68% 62% 36% 32%;
+      background: linear-gradient(#fff6ba 0%, #ffc75f 52%, #ed7c52 100%);
+      box-shadow:
+        0 0 14px 5px rgba(255, 186, 80, 0.42),
+        0 0 34px 14px rgba(255, 209, 116, 0.17);
+      opacity: 0;
+      transform: scale(0.15);
+      transform-origin: 50% 100%;
+      transition: opacity 0.2s ease, transform 0.3s ease;
+    }
+
+    .flame::after {
+      position: absolute;
+      bottom: 3px;
+      left: 8px;
+      width: 9px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fffce8;
+      content: "";
+    }
+
+    .candle.is-lit .flame {
+      opacity: 1;
+      transform: scale(1);
+      animation: flicker 0.9s ease-in-out infinite alternate;
+    }
+
+    .candle.is-ready::before {
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      width: 64px;
+      height: 64px;
+      border: 1px dashed rgba(200, 108, 112, 0.38);
+      border-radius: 50%;
+      content: "";
+      transform: translateX(-50%);
+      animation: ready 1.8s ease-in-out infinite;
+    }
+
+    .candle.is-out .flame {
+      opacity: 0;
+      transform: scale(0.06) translateY(-8px);
+      transition-duration: 0.16s;
+    }
+
+    .smoke {
+      position: absolute;
+      bottom: 108px;
+      left: 26px;
+      width: 10px;
+      height: 10px;
+      border: 2px solid rgba(102, 113, 105, 0.4);
+      border-radius: 50%;
+      opacity: 0;
+    }
+
+    .candle.is-out .smoke {
+      animation: smoke 1.25s ease-out forwards;
+    }
+
+    .wish-reminder {
+      display: flex;
+      width: fit-content;
+      min-height: 34px;
+      margin: -4px auto 14px;
+      padding: 6px 16px;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid rgba(179, 125, 113, 0.18);
+      border-radius: 20px 18px 19px 17px;
+      color: #9b6565;
+      font-size: 14px;
+      letter-spacing: 1px;
+      background: rgba(255, 249, 239, 0.82);
+    }
+
+    .wish-reminder b {
+      color: #d38b80;
+      font-weight: 400;
+    }
+
+    .actions {
+      min-height: 90px;
+      text-align: center;
+    }
+
+    .hint {
+      margin: 0 0 12px;
+      color: #71857a;
+      font-size: 14px;
+      line-height: 1.65;
+      letter-spacing: 1px;
+    }
+
+    .primary {
+      min-width: min(300px, 84vw);
+      min-height: 52px;
+      padding: 0 26px;
+      border: 0;
+      border-radius: 28px 24px 27px 23px;
+      color: #fffdf5;
+      font-size: 17px;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #c96d72, #b95f67);
+      box-shadow:
+        0 12px 24px rgba(161, 80, 83, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.18);
+      cursor: pointer;
+    }
+
+    .primary:active {
+      transform: translateY(1px) scale(0.99);
+    }
+
+    .hold-status {
+      width: min(280px, 80vw);
+      margin: 8px auto 0;
+      color: #9b6565;
+      font-size: 12px;
+    }
+
+    .hold-status-head {
+      display: flex;
+      margin-bottom: 7px;
+      justify-content: space-between;
+    }
+
+    .hold-track {
+      height: 7px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: rgba(163, 108, 102, 0.14);
+    }
+
+    .hold-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #d78c83, #a9c4ae);
+    }
+
+    .letter-overlay {
+      position: fixed;
+      z-index: 20;
+      inset: 0;
+      display: grid;
+      padding:
+        calc(16px + env(safe-area-inset-top))
+        max(16px, env(safe-area-inset-right))
+        calc(16px + env(safe-area-inset-bottom))
+        max(16px, env(safe-area-inset-left));
+      place-items: center;
+      visibility: hidden;
+      opacity: 0;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(255, 219, 211, 0.65), transparent 34%),
+        radial-gradient(circle at 84% 78%, rgba(190, 221, 203, 0.7), transparent 36%),
+        var(--paper);
+      transition: opacity 0.5s ease, visibility 0.5s;
+    }
+
+    .letter-overlay.is-visible {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .letter-card {
+      display: flex;
+      width: min(100%, 430px);
+      height: min(100%, 760px);
+      padding: 27px 25px 22px;
+      flex-direction: column;
+      border: 1px solid rgba(91, 114, 100, 0.12);
+      border-radius: 30px 24px 28px 26px;
+      background: var(--paper-light);
+      box-shadow: 0 20px 55px rgba(75, 87, 70, 0.14);
+      transform: translateY(24px) rotate(-0.35deg);
+      transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.25, 1);
+    }
+
+    .letter-overlay.is-visible .letter-card {
+      transform: translateY(0) rotate(-0.35deg);
+    }
+
+    .letter-star {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      margin: 0 auto 8px;
+      place-items: center;
+      border-radius: 50%;
+      color: #b96368;
+      background: #f2dfd7;
+    }
+
+    .to {
+      color: #87998e;
+      font-family: "Courier New", monospace;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-align: center;
+    }
+
+    .letter-title {
+      margin: 9px 0 0;
+      color: #40564a;
+      font-size: clamp(25px, 7vw, 34px);
+      font-weight: 500;
+      line-height: 1.35;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .letter-rule {
+      width: 52px;
+      height: 2px;
+      margin: 14px auto 5px;
+      border-radius: 3px;
+      background: #d6b29d;
+    }
+
+    .letter-scroll {
+      min-height: 0;
+      flex: 1;
+      overflow-y: auto;
+      padding: 7px 4px 10px;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+    }
+
+    .letter-scroll p {
+      margin: 0;
+      padding: 8px 0;
+      color: #40564a;
+      font-size: clamp(16px, 4.7vw, 19px);
+      line-height: 1.85;
+      letter-spacing: 0.5px;
+      text-align: left;
+    }
+
+    .letter-date {
+      padding-top: 10px;
+      color: #94a198;
+      font-family: "Courier New", monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    .replay {
+      min-height: 40px;
+      margin: 12px auto 0;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 24px;
+      color: #97595e;
+      font-size: 14px;
+      background: #f5e6dd;
+      cursor: pointer;
+    }
+
+    .share-note {
+      margin: 8px 0 0;
+      color: #94a198;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    canvas {
+      position: fixed;
+      z-index: 25;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    @keyframes flicker {
+      from {
+        transform: scale(0.94) rotate(-3deg);
+      }
+      50% {
+        transform: scale(1.03) rotate(1deg);
+      }
+      to {
+        transform: scale(0.98) rotate(3deg);
+      }
+    }
+
+    @keyframes ready {
+      0%,
+      100% {
+        opacity: 0.25;
+        transform: translateX(-50%) scale(0.9);
+      }
+      50% {
+        opacity: 0.72;
+        transform: translateX(-50%) scale(1.06);
+      }
+    }
+
+    @keyframes smoke {
+      0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.5);
+      }
+      20% {
+        opacity: 0.6;
+      }
+      100% {
+        opacity: 0;
+        transform: translate(12px, -70px) scale(2);
+      }
+    }
+
+    @media (max-height: 700px) {
+      .eyebrow {
+        display: none;
+      }
+
+      .name {
+        font-size: 21px;
+      }
+
+      .greeting {
+        font-size: 42px;
+      }
+
+      .cake-stage {
+        height: 300px;
+        transform: scale(0.9);
+        transform-origin: 50% 0;
+        margin-bottom: -30px;
+      }
+
+      .wish-reminder {
+        margin-top: 0;
+      }
+
+      .letter-card {
+        height: calc(100svh - 28px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+        padding-top: 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <span class="date">2026.11.11</span>
+      <button class="icon-button" id="soundButton" type="button" aria-label="关闭音效">
+        <span id="soundIcon" aria-hidden="true">♪</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <span class="eyebrow">A LITTLE WISH FOR YOU</span>
+        <h1>
+          <span class="name">陈思蓓</span>
+          <span class="greeting">生日快乐</span>
+        </h1>
+      </section>
+
+      <section class="cake-stage" id="cakeStage" aria-label="一座插着三支生日蜡烛的三层手绘蛋糕">
+        <div class="cake-glow" aria-hidden="true"></div>
+        <div class="cake" aria-hidden="true">
+          <div class="plate-shadow"></div>
+          <div class="plate"></div>
+          <div class="tier tier-bottom"></div>
+          <div class="tier tier-middle"></div>
+          <div class="tier tier-top"></div>
+        </div>
+        <div class="candles" id="candles">
+          <button class="candle" type="button" data-index="0" aria-label="点亮第一支生日蜡烛">
+            <span class="flame"></span>
+            <span class="smoke"></span>
+            <span class="wick"></span>
+            <span class="candle-body"></span>
+          </button>
+          <button class="candle" type="button" data-index="1" aria-label="点亮第二支生日蜡烛">
+            <span class="flame"></span>
+            <span class="smoke"></span>
+            <span class="wick"></span>
+            <span class="candle-body"></span>
+          </button>
+          <button class="candle" type="button" data-index="2" aria-label="点亮第三支生日蜡烛">
+            <span class="flame"></span>
+            <span class="smoke"></span>
+            <span class="wick"></span>
+            <span class="candle-body"></span>
+          </button>
+        </div>
+      </section>
+
+      <div class="wish-reminder">
+        <b aria-hidden="true">✦</b>
+        <span>记得许下愿望后再吹蜡烛</span>
+      </div>
+
+      <section class="actions" aria-live="polite">
+        <button class="primary" id="lightAllButton" type="button">点亮生日蜡烛</button>
+        <p class="hint" id="hint">可以直接点击蜡烛逐支点亮，也可以一次点亮全部</p>
+        <div class="hold-status" id="holdStatus" hidden>
+          <div class="hold-status-head">
+            <span>保持按住，烛光正在逐支熄灭</span>
+            <span id="holdCount">0 / 3</span>
+          </div>
+          <div class="hold-track">
+            <div class="hold-fill" id="holdFill"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <section class="letter-overlay" id="letterOverlay" aria-hidden="true">
+    <article class="letter-card">
+      <div class="letter-star" aria-hidden="true">✦</div>
+      <div class="to">TO 陈思蓓</div>
+      <h2 class="letter-title">生日快乐 思蓓！🎂</h2>
+      <div class="letter-rule"></div>
+      <div class="letter-scroll" id="letterScroll">
+        <p>读完了你的文字，能感受到你这一路走来的不容易。那些曾经的遗憾与不甘，还好最终都成为了你奔赴下一段旅程的力量。</p>
+        <p>很喜欢你说的那句话：“真正的困难与痛苦，是一个心急想要奔赴未来的人，偏偏拥有了一段被迫慢下来、步履蹒跚的人生。”但我想告诉你，那些慢下来的日子并没有白费，它们让你变得更加坚韧，也让今天的你更加从容。</p>
+        <p>25岁，对于我们来说是一个很好的年纪。过去的故事已经写下了完美的句号。属于你的精彩未来才刚刚开始。希望未来的你，既有重新出发的勇气，也有享受当下的从容；既能坚定地奔赴理想，也能坦然接受人生的缓慢。</p>
+        <p>愿你往后的日子，少一些遗憾，多一些惊喜；少一些自我怀疑，多一些坚定与热爱。愿你所走的每一步都有意义，所期待的远方终能抵达。</p>
+        <p>也希望多年以后，当你再次回望今天，依然会为那个跌跌撞撞却始终没有放弃的自己感到骄傲。</p>
+        <p>生日快乐！愿你一路有光，前路坦荡，终能抵达自己心中更辽阔的远方。</p>
+      </div>
+      <div class="letter-date">今天 · 2026.11.11</div>
+      <button class="replay" id="replayButton" type="button">再看一次烛光</button>
+    </article>
+  </section>
+
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <script>
+    (() => {
+      const candles = Array.from(document.querySelectorAll(".candle"));
+      const cakeStage = document.getElementById("cakeStage");
+      const lightAllButton = document.getElementById("lightAllButton");
+      const hint = document.getElementById("hint");
+      const holdStatus = document.getElementById("holdStatus");
+      const holdFill = document.getElementById("holdFill");
+      const holdCount = document.getElementById("holdCount");
+      const overlay = document.getElementById("letterOverlay");
+      const replayButton = document.getElementById("replayButton");
+      const letterScroll = document.getElementById("letterScroll");
+      const soundButton = document.getElementById("soundButton");
+      const soundIcon = document.getElementById("soundIcon");
+      const confettiCanvas = document.getElementById("confettiCanvas");
+      const confettiContext = confettiCanvas.getContext("2d");
+
+      const HOLD_DURATION = 1200;
+      const state = {
+        stage: "intro",
+        lit: [false, false, false],
+        soundEnabled: true,
+        holdStart: 0,
+        holdFrame: null,
+        outCount: 0,
+        confettiFrame: null,
+        timers: []
+      };
+
+      let audioContext = null;
+
+      function getAudioContext() {
+        if (!state.soundEnabled) return null;
+        audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
+        if (audioContext.state === "suspended") audioContext.resume();
+        return audioContext;
+      }
+
+      function playTone(frequency, start, duration, volume = 0.08, type = "sine") {
+        const context = getAudioContext();
+        if (!context) return;
+        const oscillator = context.createOscillator();
+        const gain = context.createGain();
+        oscillator.type = type;
+        oscillator.frequency.setValueAtTime(frequency, context.currentTime + start);
+        gain.gain.setValueAtTime(0.0001, context.currentTime + start);
+        gain.gain.exponentialRampToValueAtTime(
+          Math.max(volume, 0.0002),
+          context.currentTime + start + 0.015
+        );
+        gain.gain.exponentialRampToValueAtTime(
+          0.0001,
+          context.currentTime + start + duration
+        );
+        oscillator.connect(gain).connect(context.destination);
+        oscillator.start(context.currentTime + start);
+        oscillator.stop(context.currentTime + start + duration + 0.03);
+      }
+
+      function playLightSound() {
+        playTone(880, 0, 0.28, 0.07);
+        playTone(1320, 0.02, 0.2, 0.035);
+      }
+
+      function playBlowSound() {
+        const context = getAudioContext();
+        if (!context) return;
+        const bufferSize = context.sampleRate * 0.38;
+        const buffer = context.createBuffer(1, bufferSize, context.sampleRate);
+        const channel = buffer.getChannelData(0);
+        let smooth = 0;
+        for (let index = 0; index < bufferSize; index += 1) {
+          smooth = smooth * 0.82 + (Math.random() * 2 - 1) * 0.18;
+          channel[index] = smooth * (1 - index / bufferSize) * 0.28;
+        }
+        const source = context.createBufferSource();
+        const gain = context.createGain();
+        source.buffer = buffer;
+        gain.gain.value = 0.7;
+        source.connect(gain).connect(context.destination);
+        source.start();
+      }
+
+      function playCelebrateSound() {
+        [523.25, 659.25, 783.99, 1046.5, 783.99, 1046.5].forEach((note, index) => {
+          playTone(note, index * 0.14, 0.38, 0.055);
+          playTone(note * 2, index * 0.14 + 0.01, 0.28, 0.014);
+        });
+      }
+
+      function setStage(stage) {
+        state.stage = stage;
+        cakeStage.classList.toggle("is-lit", stage === "lit");
+        candles.forEach((candle) => {
+          candle.classList.toggle("is-ready", stage === "lit" && candle.classList.contains("is-lit"));
+          candle.setAttribute(
+            "aria-label",
+            stage === "lit" ? "长按吹灭蜡烛" : "点亮生日蜡烛"
+          );
+        });
+        lightAllButton.hidden = stage !== "intro";
+        holdStatus.hidden = stage !== "lit";
+        if (stage === "intro") {
+          hint.textContent = "可以直接点击蜡烛逐支点亮，也可以一次点亮全部";
+        } else if (stage === "lit") {
+          hint.textContent = "先许个愿，然后长按任意一支蜡烛吹灭烛光";
+        } else if (stage === "extinguishing") {
+          hint.textContent = "愿望正在被听见…";
+        }
+      }
+
+      function lightOne(index) {
+        if (state.stage !== "intro" || state.lit[index]) return;
+        state.lit[index] = true;
+        candles[index].classList.add("is-lit");
+        playLightSound();
+        navigator.vibrate?.(15);
+        if (state.lit.every(Boolean)) setStage("lit");
+      }
+
+      function lightAll() {
+        if (state.stage !== "intro") return;
+        state.stage = "lighting";
+        lightAllButton.hidden = true;
+        hint.textContent = "烛光正在一盏盏亮起…";
+        playLightSound();
+        candles.forEach((candle, index) => {
+          const timer = window.setTimeout(() => {
+            state.lit[index] = true;
+            candle.classList.add("is-lit");
+            navigator.vibrate?.(10);
+            if (index === candles.length - 1) {
+              window.setTimeout(() => setStage("lit"), 460);
+            }
+          }, index * 300);
+          state.timers.push(timer);
+        });
+      }
+
+      function beginHold(event) {
+        if (state.stage !== "lit" || state.holdFrame) return;
+        event.preventDefault();
+        state.holdStart = performance.now();
+        state.outCount = 0;
+        holdStatus.hidden = false;
+        holdFill.style.width = "0%";
+        holdCount.textContent = "0 / 3";
+        hint.textContent = "保持按住，烛光正在逐支熄灭…";
+
+        const tick = (now) => {
+          const progress = Math.min(1, (now - state.holdStart) / HOLD_DURATION);
+          const targetOut = Math.min(3, Math.floor(progress * 3 + 0.001));
+          while (state.outCount < targetOut) {
+            candles[state.outCount].classList.add("is-out");
+            candles[state.outCount].classList.remove("is-ready");
+            navigator.vibrate?.(12);
+            state.outCount += 1;
+          }
+          holdFill.style.width = `${progress * 100}%`;
+          holdCount.textContent = `${state.outCount} / 3`;
+          if (progress >= 1) {
+            state.holdFrame = null;
+            finishCelebration();
+            return;
+          }
+          state.holdFrame = requestAnimationFrame(tick);
+        };
+        state.holdFrame = requestAnimationFrame(tick);
+      }
+
+      function endHold() {
+        if (!state.holdFrame) return;
+        cancelAnimationFrame(state.holdFrame);
+        state.holdFrame = null;
+        state.outCount = 0;
+        candles.forEach((candle) => {
+          candle.classList.remove("is-out");
+          candle.classList.add("is-ready");
+        });
+        holdFill.style.width = "0%";
+        holdCount.textContent = "0 / 3";
+        hint.textContent = "先许个愿，然后长按任意一支蜡烛吹灭烛光";
+      }
+
+      function finishCelebration() {
+        if (state.stage !== "lit") return;
+        state.stage = "extinguishing";
+        candles.forEach((candle) => {
+          candle.classList.remove("is-ready");
+          candle.classList.add("is-out");
+        });
+        holdStatus.hidden = true;
+        hint.textContent = "愿望正在被听见…";
+        playBlowSound();
+        window.setTimeout(() => {
+          navigator.vibrate?.([30, 40, 70]);
+          overlay.classList.add("is-visible");
+          overlay.setAttribute("aria-hidden", "false");
+          letterScroll.scrollTop = 0;
+          playCelebrateSound();
+          startConfetti();
+        }, 360);
+      }
+
+      function resizeCanvas() {
+        const ratio = Math.min(window.devicePixelRatio || 1, 2);
+        confettiCanvas.width = window.innerWidth * ratio;
+        confettiCanvas.height = window.innerHeight * ratio;
+        confettiContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+      }
+
+      function startConfetti() {
+        resizeCanvas();
+        const colors = ["#c86c72", "#9abfa7", "#edc36f", "#e9a6a0", "#90a9a0"];
+        const particles = Array.from({ length: 72 }, (_, index) => ({
+          x: innerWidth * (0.14 + Math.random() * 0.72),
+          y: -20 - Math.random() * innerHeight * 0.3,
+          size: 5 + Math.random() * 7,
+          vy: 2 + Math.random() * 2.8,
+          vx: -0.7 + Math.random() * 1.4,
+          rotation: Math.random() * Math.PI * 2,
+          spin: -0.15 + Math.random() * 0.3,
+          color: colors[index % colors.length],
+          round: index % 4 === 0
+        }));
+        const startedAt = performance.now();
+        const duration = 2600;
+        const draw = (now) => {
+          const elapsed = now - startedAt;
+          const fade = elapsed > duration * 0.68
+            ? Math.max(0, 1 - (elapsed - duration * 0.68) / (duration * 0.32))
+            : 1;
+          confettiContext.clearRect(0, 0, innerWidth, innerHeight);
+          confettiContext.save();
+          confettiContext.globalAlpha = fade;
+          particles.forEach((particle) => {
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+            particle.rotation += particle.spin;
+            confettiContext.save();
+            confettiContext.translate(particle.x, particle.y);
+            confettiContext.rotate(particle.rotation);
+            confettiContext.fillStyle = particle.color;
+            if (particle.round) {
+              confettiContext.beginPath();
+              confettiContext.arc(0, 0, particle.size * 0.35, 0, Math.PI * 2);
+              confettiContext.fill();
+            } else {
+              confettiContext.fillRect(
+                -particle.size / 2,
+                -particle.size / 4,
+                particle.size,
+                particle.size / 2
+              );
+            }
+            confettiContext.restore();
+          });
+          confettiContext.restore();
+          if (elapsed < duration) {
+            state.confettiFrame = requestAnimationFrame(draw);
+          } else {
+            confettiContext.clearRect(0, 0, innerWidth, innerHeight);
+          }
+        };
+        if (state.confettiFrame) cancelAnimationFrame(state.confettiFrame);
+        state.confettiFrame = requestAnimationFrame(draw);
+      }
+
+      function replay() {
+        state.timers.forEach(clearTimeout);
+        state.timers = [];
+        if (state.holdFrame) cancelAnimationFrame(state.holdFrame);
+        if (state.confettiFrame) cancelAnimationFrame(state.confettiFrame);
+        state.holdFrame = null;
+        state.confettiFrame = null;
+        state.outCount = 0;
+        state.lit = [false, false, false];
+        candles.forEach((candle) => {
+          candle.classList.remove("is-lit", "is-out", "is-ready");
+        });
+        confettiContext.clearRect(0, 0, innerWidth, innerHeight);
+        overlay.classList.remove("is-visible");
+        overlay.setAttribute("aria-hidden", "true");
+        holdStatus.hidden = true;
+        holdFill.style.width = "0%";
+        setStage("intro");
+      }
+
+      candles.forEach((candle, index) => {
+        candle.addEventListener("click", () => lightOne(index));
+        candle.addEventListener("pointerdown", (event) => {
+          if (state.stage === "lit") beginHold(event);
+        });
+        candle.addEventListener("contextmenu", (event) => event.preventDefault());
+      });
+
+      ["pointerup", "pointercancel"].forEach((eventName) => {
+        window.addEventListener(eventName, endHold);
+      });
+
+      lightAllButton.addEventListener("click", lightAll);
+      replayButton.addEventListener("click", replay);
+      soundButton.addEventListener("click", () => {
+        state.soundEnabled = !state.soundEnabled;
+        soundIcon.textContent = state.soundEnabled ? "♪" : "×";
+        soundButton.setAttribute("aria-label", state.soundEnabled ? "关闭音效" : "开启音效");
+        if (state.soundEnabled) playLightSound();
+      });
+      window.addEventListener("resize", resizeCanvas);
+
+      setStage("intro");
+    })();
+  </script>
+</body>
+</html>
